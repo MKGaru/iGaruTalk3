@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>iGaruTalkCore</title>
+	<meta name="description" content="" />
+	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css">
+
+	<script src="js/vendor/jquery-1.7.2.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.js"></script>
+	<script src="js/vendor/swfobject.js"></script>
+	<script>
+		var app = window;
+		var isDebug = true;	//デバッグモードか？　
+		var flashvars = {
+		};
+		var params = {
+			menu: "false",
+			scale: "noScale",
+			allowFullscreen: "true",
+			allowScriptAccess: "always",
+			bgcolor: ""
+			//wmode: "transparent"
+		};
+		var attributes = {
+			id:"iGaruTalkCore"
+		};
+		var swfObj=null;
+		function callback(obj){
+			swfObj= obj.ref;
+		}
+		function onReadySWF(){
+			debugLog("JS","SWFのロード完了");
+		}
+		function onMicStateChange(isMuted){
+			if(isMuted){	//マイクの利用拒否された
+				alert("カメラ・マイクの利用が拒否されました");
+			}
+			else{			//利用許可された
+				$( "#swfDialog" ).dialog("close");
+			}
+		}
+		function streamPlay(){
+			var partnerID = $("#partnerID").val();
+			swfObj.streamPlay(partnerID);
+		}
+		function onNetConnected(peerID){
+			debugLog("JS","myID:"+peerID)
+			$("#myID").val(peerID);
+		}
+		function debugLog(from,msg){
+			if(isDebug)
+				console.info("["+from+"]"+msg);
+		}
+		var swf = { //swfからのコールバック関数用ネームスペース
+		onReadySWF : function (){
+				debugLog("JS","SWFのロード完了");
+				StateInfo.infoTabs.tabs("select", 0);	//ユーザ情報へ切り替え
+			},
+			
+			/**SWFNetworkに接続完了時にコールされる*/
+			onNetConnected : function (peerID){
+				debugLog("JS","myID:"+peerID)
+			},
+			/*マイクの状態に変化があった*/
+			onMicStateChange: function(isMuted){
+				if(isMuted)
+					debugLog("JS","マイクは無効です");
+				else
+					debugLog("JS","マイクは有効です");
+			}
+		};
+		swfobject.embedSWF(
+			"swf/iGaruTalkCore.swf", 
+			"altContent", "214", 137, "10.0.0", 
+			"swf/expressInstall.swf", 
+			flashvars, params, attributes,callback);
+	</script>
+	<style>
+		html, body { height:100%; overflow:hidden; }
+		body { margin:0; background-color:#eee;}
+		#swfDialog{ margin:0; padding:0; opacity: 1;}
+		#iGaruTalkCore { outline: none;}
+		input[type="text"]{ width:40em; }
+	</style>
+</head>
+<body>
+	<span onclick="homuhomu()">テストぼたん</span><br>
+	<input type="text" id="myID" placeholder="自分のID"><button onclick="swfObj.streamPublish();">開始</button><br>
+	<input type="text" id="partnerID" placeholder="通信相手のIDを入力"><button onclick="streamPlay();">接続</button>
+	
+	<div id="swfDialog">
+		<div id="altContent">
+			<h1>FlashPlayerがインストールされていないか、古すぎます。</h1>
+			<p><a href="http://www.adobe.com/go/getflashplayer">こちらから、Adobe Flash playerを入手してください</a></p>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$( "#swfDialog" ).dialog({
+				draggable:true,
+				resizable: false,
+				modal: false,
+				height: 'auto',
+				width: 214
+			})
+			.parent().find(".ui-dialog-titlebar-close").hide();
+			
+		});
+	</script>
+</body>
+</html>

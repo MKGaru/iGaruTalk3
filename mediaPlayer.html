@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			*{
+				width:100%;
+				height:100%;
+				margin:0;
+				padding:0;
+				position: absolute;
+				left:0;
+				right:0;
+				top:0;
+				bottom:0;
+			}
+		</style>
+		<script src="lib/sugar.js"></script>
+		<script>
+			function onload(){
+				var html = location.hash.substring(1).unescapeURL();
+				document.getElementById("container").innerHTML=html;
+			}
+		</script>
+	</head>
+	<body onload="onload()" id="container">
+		読込中
+	</body>
+</html>

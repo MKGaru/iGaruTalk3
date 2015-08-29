@@ -1,0 +1,463 @@
+*{
+  outline:none;
+  user-select: none;
+}
+.allow-select,
+.allow-select *{
+  user-select: initial;
+}
+
+@-webkit-keyframes ui-strong-accent {
+  0% {-webkit-filter:invert(30%) hue-rotate(30deg)}
+  100% {-webkit-filter:invert(10%) hue-rotate(60deg)}
+}
+.ui-strong-accent{
+  -webkit-animation: ui-strong-accent 750ms ease-in-out infinite alternate;
+}
+
+html,body{
+  background-color: rgba(214,211,206,100);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow:  hidden;
+}
+input,textarea,select,button,
+body{
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+}
+.k-window{
+  display: none;
+}
+
+.header-control{
+  height: 50px;
+}
+
+body{
+  &>.k-animation-container{
+    margin-top: 6px;
+    font-size:80%;
+  }
+  &>footer{
+    height: 45px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.85em;
+    color: #333;
+    line-height: 20px;
+    padding: 0 6px !important;
+    &>div{
+      position:relative;
+      height:27px;
+      &>.text{
+        position:absolute;
+        bottom:0;
+        width:100%;
+        resize:none;
+        box-sizing: border-box;
+        border: solid 1px #ccc;
+        &:empty:before{
+          content: attr(placeholder);
+          opacity: 0.5;
+        }
+      }
+      &.info{
+
+      }
+    }
+  }
+}
+.main{
+  position:absolute;
+  top:50px;
+  left:0;
+  right:0;
+  bottom:45px;
+}
+.no-padding{
+  padding:0 !important;
+}
+.splitter{
+  height: 100%;
+}
+.pane{
+
+}
+
+ul.logs{
+  margin:0;
+  padding:0;
+  list-style:none;
+  li{
+    font-size: 75%;
+  }
+  .message{
+    white-space: pre-wrap;
+    display: inline-block;
+    vertical-align: top;
+    word-break: break-all;
+  }
+  .time{
+
+  }
+  .sender{
+    font-weight: bold;
+  }
+}
+
+.fa-li-icon{
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+}
+
+.k-tabstrip,
+.k-tabstrip-wrapper{
+  height: 100%;
+}
+
+.k-toolbar .k-button{
+  padding: 5px;
+  margin: 0;
+}
+.k-toolbar .k-button .k-sprite{
+  width: 32px;
+  height: 32px;
+}
+.k-widget.k-tooltip{
+  border-color: #000;
+  background-color: #222;
+  color: #fff;
+}
+.k-callout-s{
+  border-top-color: #222;
+}
+.k-callout-n{
+  border-bottom-color: #222;
+}
+.k-tooltip{
+  pointer-events: none;
+}
+.k-state-active{
+  z-index:0 !important;
+}
+.k-link {
+  line-height: 1em;
+}
+.tab-page{
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.k-tabstrip-wrapper h4{
+  margin: 0;
+}
+
+.k-item .k-i-close{
+  margin-left:0.25em;
+}
+.k-item:hover .k-i-close{
+
+}
+.k-item:hover .k-i-close:hover{
+  border-radius:50%;
+  box-shadow: 2px 2px 2px rgba(100,100,100,0.5);
+}
+.k-state-disabled {
+  -webkit-filter:grayscale();
+}
+
+
+.folder16{
+  background-image: url(../img/icon16/folder-horizontal.png);
+  &-open{
+    background-image: url(../img/icon16/folder.png);
+  }
+  &-red{
+    background-image: url(../img/icon16/folder_red.png);
+  }
+  &-green{
+    background-image: url(../img/icon16/folder_green.png);
+  }
+}
+
+.user16{
+  &,
+  &-online{
+    background-image: url(../img/icon16/status_online.png);
+  }
+  &-away{
+    background-image: url(../img/icon16/status_away3.png);
+  }
+  &-busy{
+    background-image: url(../img/icon16/status_busy.png);
+  }
+  &-speaker{
+    background-image: url(../img/icon16/sound.png);
+  }
+  &-camera{
+    background-image: url(../img/icon16/webcam.png);
+  }
+}
+
+/*オンライン状態*/
+/*オンライン*/
+.online32{
+  //オンライン
+  &,
+  &[state="online"]{
+    background-image: url("../img/icon32/status_online.png");
+  }
+  //ビジー
+  &[state="busy"]{
+    background-image: url("../img/icon32/status_busy.png");
+  }
+  //離席
+  &[state="away"]{
+    background-image: url("../img/icon32/status_away3.png");
+  }
+}
+/* マイク状態 */
+.mic32{
+  //有効
+  &,
+  &[state="enable"]{
+    background-image: url("../img/icon32/microphone.png");
+  }
+  //無効(ミュート)
+  &[state="disable"]{
+    background-image: url("../img/icon32/microphone_mute.png");
+  }
+  //エラー
+  &[state="error"]{
+    background-image: url("../img/icon32/microphone_err.png");
+  }
+}
+/* カメラ状態 */
+.webcam32{
+  // 有効
+  &,
+  &[state="enable"]{
+    background-image: url("../img/icon32/webcam.png");
+  }
+  // 無効（ミュート）
+  &[state="disable"]{
+    background-image: url("../img/icon32/webcam_mute.png");
+  }
+  // エラー
+  &[state="error"]{
+    background-image: url("../img/icon32/webcam_error.png");
+  }
+}
+/*ファイル転送*/
+.file32{
+  background-image: url("../img/icon32/folder_go.png")
+}
+/*ルーム追加*/
+.addCh32{
+  background-image: url("../img/icon32/door_add.png");
+}
+/*ルーム削除*/
+.removeCh32{
+  background-image: url("../img/icon32/door_remove.png");
+}
+
+/* マスターボリューム */
+.sound32{
+  &,
+  &[state="enable"]{
+    background-image: url("../img/icon32/sound.png");
+  }
+  &[state="disable"]{
+    background-image: url("../img/icon32/sound_mute.png");
+  }
+}
+/*スクリーンキャプチャ*/
+.screen32{
+  background-image: url("../img/icon32/widescreen.png");
+}
+.screen16{
+  background-image: url("../img/icon16/widescreen.png");
+}
+/*編集*/
+.edit16{
+  background-image: url("../img/icon16/page_white_edit.png");
+}
+.accept16{
+  background-image: url("../img/icon16/accept_button.png");
+}
+.inline-icon{
+  display:inline-block;
+  width:16px;
+  height:16px;
+  margin-left:0.5em
+}
+/*ファイル転送*/
+ul#filetrans{
+  list-style:none;
+  padding:0;
+  padding-left: 5px;
+  &>li{
+    font-size: 75%;
+    padding: 1em;
+    border: solid 1px #ccc;
+    width: 35em;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    vertical-align: top;
+    &>.close{
+      float: right;
+      width: 1em;
+      height: 1em;
+      cursor: pointer;
+    }
+  }
+  dl{
+    margin-top: -32px;
+    margin-bottom: 0;
+    dt{
+      float:left;
+      width: 8em;
+      padding: 2px 0;
+      font-weight: bold;
+      text-indent: 1em;
+      text-align:right;
+      &:after{
+        content:":";
+        clear:both;
+      }
+    }
+    dd{
+      padding: 2px 0 2px 1em;
+      width:auto;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+  }
+  .fileicon{
+    width: 32px;
+    height: 32px;
+    margin-right:-32px;
+    /*background-color: red;	/*debug*/
+    /*background-image: url("../img/icon32/file_ext/file_extension_png.png");*/
+    position: relative;
+    top: 28px;
+  }
+
+}
+/* Youtube */
+.tab-page.youtube{
+  position:relative;
+  .menu{
+    z-index: 200;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    i{
+      cursor:pointer;
+      padding:10px;
+    }
+  }
+  &.state-playing:hover{
+    .menu{
+      background: rgba(130,130,130,0.7);
+      color: white;
+    }
+  }
+}
+#youtube-player{
+  width: 100%;
+  height:100%;
+  display:none;
+}
+#youtubeSearch{
+  padding:0;
+  input{
+    width: 90%;
+  }
+  ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+    overflow: auto;
+    position:absolute;
+    left:0;right:0;top:30px;bottom:0;
+    li{
+      cursor: pointer;
+    }
+    span{
+      display:block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+div.tabs.infos .k-tabstrip-items,
+div.tabs.text-messages .k-tabstrip-items{
+  font-size: 75% !important;
+}
+div.tab-page.youtube.state-playing #youtube-player{
+  display:inherit;
+}
+div.tab-page.youtube #youtube-player+div{
+  display: block;
+  padding: 0.5em 1em;
+  margin-top:2em;
+}
+div.tab-page.youtube.state-playing  #youtube-player+div{
+  display:none;
+}
+
+/*メディア、youtube内のパーツは親コンテンツいっぱいに表示*/
+#media{
+  position:relative;
+  height: 100%;
+}
+#youtube > iframe,
+#media > iframe,
+#media > embed,
+#media > object{
+  margin:0;
+  padding:0;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  width:100% !important;
+  height:100% !important;
+}
+/*メディア内の画像は、比率を維持したまま最大で表示*/
+#media > img{
+  display:block;
+  margin:auto;
+  padding:0;
+  text-align: center;
+  vertical-align:middle;
+  max-width:100% !important;
+  max-height:100% !important;
+}
+
+.twemoji-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  li{
+    display: inline-block;
+    cursor:pointer;
+  }
+}
+
+.input-emoji{
+  position: absolute;
+  right: 7px;
+  z-index: 1;
+  top: 6px;
+  cursor: pointer;
+}

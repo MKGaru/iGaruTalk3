@@ -1,0 +1,44 @@
+<!DOCTYPE  html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			*{
+				width:100%;
+				height:100%;
+				margin:0;
+				padding:0;
+				position: absolute;
+				left:0;
+				right:0;
+				top:0;
+				bottom:0;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.parent=window;
+			if(window.Nicovideo == undefined)
+				window.Nicovideo = {};
+			if(Nicovideo.Global == undefined)
+				Nicovideo.Global = {
+					playerCount: 0,
+					embedMode: "embed"
+				};
+			document.open();
+			var id = location.hash.substring(1);
+			document.write('<script src="http://ext.nicovideo.jp/thumb_watch/'+id+'?tr=1"></scr'+'ipt>');
+			document.close();
+		</script>
+		<!--
+		<script defer="defer">
+			setTimeout( function(){
+				// ２．５秒後に再生命令
+				nicoplayer = document.getElementById('external_nico_0');
+				nicoplayer.ext_play(true);
+			},2500);
+		</script>
+		-->
+	</body>
+</html>

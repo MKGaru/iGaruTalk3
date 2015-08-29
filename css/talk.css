@@ -1,0 +1,416 @@
+* {
+    outline: none;
+    user-select: none;
+}
+.allow-select,
+.allow-select * {
+    user-select: initial;
+}
+@-webkit-keyframes ui-strong-accent {
+    0% {-webkit-filter:invert(30%) hue-rotate(30deg)}
+    100% {-webkit-filter:invert(10%) hue-rotate(60deg)}
+}
+.ui-strong-accent{
+    -webkit-animation: ui-strong-accent 750ms ease-in-out infinite alternate;
+}
+html,
+body {
+    background-color: #d6d3ce;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+input,
+textarea,
+select,
+button,
+body {
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+}
+.k-window {
+    display: none;
+}
+.header-control {
+    height: 50px;
+}
+body > .k-animation-container {
+    margin-top: 6px;
+    font-size: 80%;
+}
+body > footer {
+    height: 45px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.85em;
+    color: #333;
+    line-height: 20px;
+    padding: 0 6px !important;
+}
+body > footer > div {
+    position: relative;
+    height: 27px;
+}
+body > footer > div > .text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    border: solid 1px #ccc;
+}
+body > footer > div > .text:empty:before {
+    content: attr(placeholder);
+    opacity: 0.5;
+}
+.main {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 45px;
+}
+.no-padding {
+    padding: 0 !important;
+}
+.splitter {
+    height: 100%;
+}
+ul.logs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul.logs li {
+    font-size: 75%;
+}
+ul.logs .message {
+    white-space: pre-wrap;
+    display: inline-block;
+    vertical-align: top;
+    word-break: break-all;
+}
+ul.logs .sender {
+    font-weight: bold;
+}
+.fa-li-icon {
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
+.k-tabstrip,
+.k-tabstrip-wrapper {
+    height: 100%;
+}
+.k-toolbar .k-button {
+    padding: 5px;
+    margin: 0;
+}
+.k-toolbar .k-button .k-sprite {
+    width: 32px;
+    height: 32px;
+}
+.k-widget.k-tooltip {
+    border-color: #000;
+    background-color: #222;
+    color: #fff;
+}
+.k-callout-s {
+    border-top-color: #222;
+}
+.k-callout-n {
+    border-bottom-color: #222;
+}
+.k-tooltip {
+    pointer-events: none;
+}
+.k-state-active {
+    z-index: 0 !important;
+}
+.k-link {
+    line-height: 1em;
+}
+.tab-page {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.k-tabstrip-wrapper h4 {
+    margin: 0;
+}
+.k-item .k-i-close {
+    margin-left: 0.25em;
+}
+.k-item:hover .k-i-close:hover {
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px rgba(100, 100, 100, 0.5);
+}
+.k-state-disabled {
+    -webkit-filter:grayscale();
+}
+.folder16 {
+    background-image: url(../img/icon16/folder-horizontal.png);
+}
+.folder16-open {
+    background-image: url(../img/icon16/folder.png);
+}
+.folder16-red {
+    background-image: url(../img/icon16/folder_red.png);
+}
+.folder16-green {
+    background-image: url(../img/icon16/folder_green.png);
+}
+.user16,
+.user16-online {
+    background-image: url(../img/icon16/status_online.png);
+}
+.user16-away {
+    background-image: url(../img/icon16/status_away3.png);
+}
+.user16-busy {
+    background-image: url(../img/icon16/status_busy.png);
+}
+.user16-speaker {
+    background-image: url(../img/icon16/sound.png);
+}
+.user16-camera{
+    background-image: url(../img/icon16/webcam.png);
+}
+/*オンライン状態*/
+/*オンライン*/
+.online32,
+.online32[state="online"] {
+    background-image: url("../img/icon32/status_online.png");
+}
+.online32[state="busy"] {
+    background-image: url("../img/icon32/status_busy.png");
+}
+.online32[state="away"] {
+    background-image: url("../img/icon32/status_away3.png");
+}
+/* マイク状態 */
+.mic32,
+.mic32[state="enable"] {
+    background-image: url("../img/icon32/microphone.png");
+}
+.mic32[state="disable"] {
+    background-image: url("../img/icon32/microphone_mute.png");
+}
+.mic32[state="error"] {
+    background-image: url("../img/icon32/microphone_err.png");
+}
+/* カメラ状態 */
+.webcam32,
+.webcam32[state="enable"] {
+    background-image: url("../img/icon32/webcam.png");
+}
+.webcam32[state="disable"] {
+    background-image: url("../img/icon32/webcam_mute.png");
+}
+.webcam32[state="error"] {
+    background-image: url("../img/icon32/webcam_error.png");
+}
+/*ファイル転送*/
+.file32 {
+    background-image: url("../img/icon32/folder_go.png");
+}
+/*ルーム追加*/
+.addCh32 {
+    background-image: url("../img/icon32/door_add.png");
+}
+/*ルーム削除*/
+.removeCh32{
+    background-image: url("../img/icon32/door_remove.png");
+}
+/* マスターボリューム */
+.sound32,
+.sound32[state="enable"] {
+    background-image: url("../img/icon32/sound.png");
+}
+.sound32[state="disable"] {
+    background-image: url("../img/icon32/sound_mute.png");
+}
+/*スクリーンキャプチャ*/
+.screen32 {
+    background-image: url("../img/icon32/widescreen.png");
+}
+.screen16 {
+    background-image: url("../img/icon16/widescreen.png");
+}
+/*編集*/
+.edit16{
+    background-image: url("../img/icon16/page_white_edit.png");
+}
+.accept16{
+    background-image: url("../img/icon16/accept_button.png");
+}
+.inline-icon{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    margin-left:0.5em
+}
+/*ファイル転送*/
+ul#filetrans {
+    list-style: none;
+    padding: 0;
+    padding-left: 5px;
+}
+ul#filetrans > li {
+    font-size: 75%;
+    padding: 1em;
+    border: solid 1px #ccc;
+    width: 35em;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    vertical-align: top;
+}
+ul#filetrans > li > .close {
+    float: right;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+ul#filetrans dl {
+    margin-top: -32px;
+    margin-bottom: 0;
+}
+ul#filetrans dl dt {
+    float: left;
+    width: 8em;
+    padding: 2px 0;
+    font-weight: bold;
+    text-indent: 1em;
+    text-align: right;
+}
+ul#filetrans dl dt:after {
+    content: ":";
+    clear: both;
+}
+ul#filetrans dl dd {
+    padding: 2px 0 2px 1em;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ul#filetrans .fileicon {
+    width: 32px;
+    height: 32px;
+    margin-right: -32px;
+    /*background-color: red;	/*debug*/
+    /*background-image: url("../img/icon32/file_ext/file_extension_png.png");*/
+    position: relative;
+    top: 28px;
+}
+/* Youtube */
+.tab-page.youtube {
+    position: relative;
+}
+.tab-page.youtube .menu {
+    z-index: 200;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+.tab-page.youtube .menu i {
+    cursor: pointer;
+    padding: 10px;
+}
+.tab-page.youtube.state-playing:hover .menu {
+    background: rgba(130, 130, 130, 0.7);
+    color: white;
+}
+#youtube-player {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#youtubeSearch {
+    padding: 0;
+}
+#youtubeSearch input {
+    width: 90%;
+}
+#youtubeSearch ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30px;
+    bottom: 0;
+}
+#youtubeSearch ul li {
+    cursor: pointer;
+}
+#youtubeSearch ul span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+div.tabs.infos .k-tabstrip-items,
+div.tabs.text-messages .k-tabstrip-items {
+    font-size: 75% !important;
+}
+div.tab-page.youtube.state-playing #youtube-player {
+    display: inherit;
+}
+div.tab-page.youtube #youtube-player + div {
+    display: block;
+    padding: 0.5em 1em;
+    margin-top: 2em;
+}
+div.tab-page.youtube.state-playing #youtube-player + div {
+    display: none;
+}
+/*メディア、youtube内のパーツは親コンテンツいっぱいに表示*/
+#media {
+    position: relative;
+    height: 100%;
+}
+#youtube > iframe,
+#media > iframe,
+#media > embed,
+#media > object {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+/*メディア内の画像は、比率を維持したまま最大で表示*/
+#media > img {
+    display: block;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+.twemoji-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.twemoji-list li {
+    display: inline-block;
+    cursor: pointer;
+}
+.input-emoji {
+    position: absolute;
+    right: 7px;
+    z-index: 1;
+    top: 6px;
+    cursor: pointer;
+}
