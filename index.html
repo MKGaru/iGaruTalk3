@@ -46,32 +46,38 @@
 		<div class="splitter k-toolbar k-widget k-toolbar-resizable" data-bind="kendoTooltip: { filter: 'a.k-button[title]' , width: 150 }">
 			<!-- ko with:me -->
 			<a class="k-button k-button-icon" title="在席状態を変更" data-bind="click:function(s,e){ status=status=='away'?'online':'away'; if(e.shiftKey)Talk.prompt('メモ設定','',function(d){description=d})}">
-				<span class="k-sprite online32" state="{{status}}"></span>
+				<span class="online32" state="{{status}}"></span>
 			</a>
 			<a class="k-button k-button-icon" title="マイクの有効/無効を変更" data-bind="on.click: isMicMuted=!isMicMuted">
-				<span class="k-sprite mic32" state="{{hasMicError?'error':(isMicMuted?'disable':'enable')}}"></span>
+				<span class="mic32" state="{{hasMicError?'error':(isMicMuted?'disable':'enable')}}"></span>
 			</a>
 			<a class="k-button k-button-icon" title="映像配信を開始/終了" data-bind="on.click: isCameraMuted=!isCameraMuted">
-				<span class="k-sprite webcam32" state="{{hasCameraError?'error':(isCameraMuted?'disable':'enable')}}"></span>
+				<span class="webcam32" state="{{hasCameraError?'error':(isCameraMuted?'disable':'enable')}}"></span>
 			</a>
 			<!-- /ko -->
 			<a class="k-button k-button-icon" title="ファイル転送" data-bind="click:uploadFileSelect">
-				<span class="k-sprite file32"></span>
+				<span class="file32"></span>
 			</a>
 			{{#if:isEnableNW}}
 			<a class="k-button k-button-icon" title="スクリーンショット" data-bind="on.click: app.sendNWCmd('capture')">
-				<span class="k-sprite screen32"></span>
+				<span class="screen32"></span>
 			</a>
 			{{/if}}
 			<a class="k-button k-button-icon" title="ルーム追加" id="addCh">
-				<span class="k-sprite addCh32"></span>
+				<span class="addCh32"></span>
 			</a>
 			<a class="k-button k-button-icon k-state-disabled" title="ルーム削除" id="removeCh">
-				<span class="k-sprite removeCh32"></span>
+				<span class="removeCh32"></span>
 			</a>
-			<div style="float:right; margin:5px 25px">
+			<div style="float:right; margin:2px 25px">
+				{{#if:!isEnableNW}}
+				<a class="k-button k-button-icon" title="アプリダウンロード" href="/client/{{navigator.platform}}/latest/iGaruTalk3.zip" target="_blank">
+					<i class="base icon32 icon32-inbox_download"></i><span style="vertical-align: bottom;">専用アプリダウンロード</span>
+				</a>
+				{{/if}}
+
 				<a class="k-button k-button-icon" title="マスターボリューム" data-bind="click: function(){app.config.masterMute=!app.config.masterMute}">
-					<span class="k-sprite sound32" state="{{app.config.masterMute?'disable':'enable'}}"></span>
+					<span class="sound32" state="{{app.config.masterMute?'disable':'enable'}}"></span>
 				</a>
 				<input data-bind="kendoSlider: { value: ko.getObservable(config,'masterVolume') , min:0, max:100, showButtons:false }" style="width: 100px" />
 			</div>
@@ -104,12 +110,12 @@
 						}">
 							<!--タブ項目-->
 							<ul>
-								<li class="k-state-active" data-tab-name="info"><img src="img/icon16/vcard.png">情報</li>
-								<li data-tab-name="file"><img src="img/icon16/folder_go.png">ファイル転送</li>
-								<li data-tab-name="youtube"><img src="img/icon16/youtube.png">Youtube</li>
-								<li data-tab-name="media"><img src="img/icon16/picture.png">Media</li>
-								<li data-tab-name="option"><img src="img/icon16/page.png">オプション</li>
-								<li data-tab-name="license"><img src="img/icon16/document.png">License</li>
+								<li class="k-state-active" data-tab-name="info"><i class="base icon16 icon16-vcard"></i>情報</li>
+								<li data-tab-name="file"><i class="base icon16 icon16-folder_go"></i>ファイル転送</li>
+								<li data-tab-name="youtube"><i class="base icon16 icon16-youtube"></i>Youtube</li>
+								<li data-tab-name="media"><i class="base icon16 icon16-picture"></i>Media</li>
+								<li data-tab-name="option"><i class="base icon16 icon16-page"></i>オプション</li>
+								<li data-tab-name="license"><i class="base icon16 icon16-document"></i>License</li>
 							</ul>
 							<!--タブ内容-->
 							<div class="tab-page" data-bind="with:widgets.tree.activeNode">
@@ -173,7 +179,7 @@
 								<ul data-bind="foreach:fileTransfers" id="filetrans">
 									<li>
 										<div class="fa fa-close close" title="閉じる" data-bind="on.click: $parent.fileTransfers.splice($parent.fileTransfers.indexOf($data),1)"></div>
-										<div class="fileicon" data-bind='style: {backgroundImage: "url(img/icon32/file_ext/file_extension_"+ext+".png)" }'></div>
+										<div class="fileicon ext base ext-file_extension_{{ext}}"></div>
 										<dl style="font-size:75%">
 											<dt>ファイル名</dt>		<dd data-bind="text: file.name"></dd>
 											<dt>サイズ</dt>		<dd data-bind="text: file.size.bytes()"></dd>
@@ -277,10 +283,12 @@
                                     </ul>
                                 </div>
 							</div>
-							<div class="tab-page" style="padding:0">
+							<div class="tab-page no-padding">
 								<div id="media">
-									<h4>Media</h4>
-									<span>Youtube以外の動画などはここで確認できます。</span>
+									<div style="padding:0.5em 1em">
+										<h4>Media</h4>
+										<span>Youtube以外の動画などはここで確認できます。</span>
+									</div>
 								</div>
 							</div>
 							<div class="tab-page" style="padding:0" data-bind="if:app.isReady">
@@ -398,10 +406,10 @@
                                 </div>
                                 <h5 style="margin:0">3rd Party License</h5>
 								<dl>
-									<dt><img src="img/icon32/fatcow.png"><span style="line-height:32px;vertical-align: top;">FatCow Icon:</span> </dt>
+									<dt><div style="display: inline-block;height:32px;width:32px"></div><!--<img src="img/icon32/fatcow.png">--><span style="line-height:32px;vertical-align: top;">FatCow Icon:</span> </dt>
 									<dd style="font-size:75%">www.fatcow.com/free-icons<br><span>( Creative Commons Attribution 3.0 License )</span><hr></dd>
 
-									<dt><img src="./css/twemoji/img/36x36/1f60a.png" height="32"><span style="line-height:32px;vertical-align: top;">twemoji:</span></dt>
+									<dt><div style="display: inline-block;height:32px;width:32px"></div><!--<img src="./css/twemoji/img/36x36/1f60a.png" height="32">--><span style="line-height:32px;vertical-align: top;">twemoji:</span></dt>
 									<dd style="font-size:75%">twitter.github.io/twemoji/<br><span>( Code licensed under MIT. Graphics licensed under CC-BY )</span><hr></dd>
 
 									<dt><div style="display: inline-block;height:32px;width:32px"></div><span style="line-height:32px;vertical-align: top;">SkyWay:</span> </dt>
@@ -425,8 +433,7 @@
         <div data-bind="
         style:{visibility:
         	activeTextTab&&
-        	activeTextTab.channel&&
-        	activeTextTab.channel.canSend
+        	(activeTextTab.channel ? activeTextTab.channel.canSend : !activeTextTab.disabled)
         		?'visible'
         		:'hidden'
         }">
@@ -439,7 +446,7 @@
 				  right:'7px'
 				});
 			}"></i>
-            <div rows="{{1+(app.input||'').split('').count('\n')}}" class="text k-input" style="min-height:2em" placeholder="チャットでの発言内容を入力..." data-bind="
+            <div rows="{{1+(app.input||'').split('').count('\n')}}" class="text k-input" style="min-height:2em;cursor:text" placeholder="チャットでの発言内容を入力..." data-bind="
            textInput: input,
            event:{
              keydown:function(data,event){

@@ -3,13 +3,26 @@ CACHE MANIFEST
 # ------------------------------------------------------------
 # バージョン情報(リソースを更新する場合、必ず値を変更する)
 # ------------------------------------------------------------
-#VERSION: 1.0.0
+#VERSION: 1.0.3
 
 
 # ------------------------------------------------------------
 # キャッシュしたいリソース
 # ------------------------------------------------------------
 CACHE:
+./favicon.ico
+./lib/sugar.js
+./lib/jquery.js
+./lib/mousetrap.js
+./lib/wysibb/jquery.wysibb.js
+./lib/kendo-ui/js/kendo.ui.core.js
+./lib/knockout.js
+./lib/knockout.punches.js
+./lib/knockout-es5.js
+./lib/knockout-else.js
+./lib/knockout-kendo.js
+./lib/eventemitter2.js
+./js/peer.min.js
 ./audio/chatRCV_sound.mp3
 ./audio/chatRCV_sound.ogg
 ./audio/chatRCV_sound.wav
@@ -25,7 +38,12 @@ CACHE:
 ./audio/join_sound.mp3
 ./audio/join_sound.ogg
 ./audio/join_sound.wav
-
+./css/talk.css
+./css/spritesheet_16.png
+./css/spritesheet_32.png
+./css/spritesheet_ext.png
+./css/twemoji/twemoji.css
+./css/twemoji/twemoji.png
 
 # ------------------------------------------------------------
 # オンラインホワイトリスト（ここでマッチするリソースのみ、オンラインアクセス可能）

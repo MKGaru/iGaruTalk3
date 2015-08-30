@@ -1,0 +1,230 @@
+.icon16 {
+  background-image: url(spritesheet_16.png);
+  background-repeat: no-repeat;
+  display: block;
+}
+.icon16.icon16-Cancel {
+  background-position: -5px -5px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-Mute {
+  background-position: -31px -5px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-Pause {
+  background-position: -57px -5px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-Play {
+  background-position: -83px -5px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-Stop {
+  background-position: -109px -5px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-Undo {
+  background-position: -135px -5px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-Volume {
+  background-position: -5px -31px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-accept_button {
+  background-position: -31px -31px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-bug_delete {
+  background-position: -57px -31px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-comment {
+  background-position: -83px -31px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-comments {
+  background-position: -109px -31px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-cut {
+  background-position: -135px -31px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-document {
+  background-position: -5px -57px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-door {
+  background-position: -31px -57px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-folder {
+  background-position: -57px -57px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-folder-horizontal {
+  background-position: -83px -57px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-folder_go {
+  background-position: -109px -57px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-folder_green {
+  background-position: -135px -57px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-folder_red {
+  background-position: -5px -83px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-house {
+  background-position: -31px -83px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-page {
+  background-position: -57px -83px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-page_edit {
+  background-position: -83px -83px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-page_white_copy {
+  background-position: -109px -83px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-page_white_delete {
+  background-position: -135px -83px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-page_white_edit {
+  background-position: -5px -109px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-page_white_paste {
+  background-position: -31px -109px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-picture {
+  background-position: -57px -109px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-question {
+  background-position: -83px -109px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-sound {
+  background-position: -109px -109px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-sound_low {
+  background-position: -135px -109px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-sound_mute {
+  background-position: -5px -135px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-sound_none {
+  background-position: -31px -135px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-status_away {
+  background-position: -57px -135px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-status_away2 {
+  background-position: -83px -135px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-status_away3 {
+  background-position: -109px -135px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-status_busy {
+  background-position: -135px -135px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-status_online {
+  background-position: -161px -5px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-toggle-small {
+  background-position: -161px -31px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-toggle-small-expand {
+  background-position: -161px -57px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-update {
+  background-position: -161px -83px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-user_comment {
+  background-position: -161px -109px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-vcard {
+  background-position: -161px -135px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-webcam {
+  background-position: -5px -161px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-widescreen {
+  background-position: -31px -161px;
+  width: 16px;
+  height: 16px;
+}
+.icon16.icon16-youtube {
+  background-position: -57px -161px;
+  width: 16px;
+  height: 16px;
+}

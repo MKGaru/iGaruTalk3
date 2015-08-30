@@ -1,3 +1,23 @@
+@import "stylesheet_16.less";
+@import "stylesheet_32.less";
+@import "stylesheet_ext.less";
+
+.icon16.base{
+  background-image: url(spritesheet_16.png);    background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align:text-top;
+}
+.icon32.base{
+  background-image: url(spritesheet_32.png);    background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align:text-top;
+}
+.ext.base{
+  background-image: url(spritesheet_ext.png);    background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align:text-top;
+}
+
 *{
   outline:none;
   user-select: none;
@@ -172,34 +192,52 @@ ul.logs{
 
 
 .folder16{
-  background-image: url(../img/icon16/folder-horizontal.png);
+  .icon16.base;
+  .icon16.icon16-folder-horizontal;
+  //background-image: url(../img/icon16/folder-horizontal.png);
   &-open{
-    background-image: url(../img/icon16/folder.png);
+    .icon16.base;
+    .icon16.icon16-folder;
+    //background-image: url(../img/icon16/folder.png);
   }
   &-red{
-    background-image: url(../img/icon16/folder_red.png);
+    .icon16.base;
+    .icon16.icon16-folder_red;
+    //background-image: url(../img/icon16/folder_red.png);
   }
   &-green{
-    background-image: url(../img/icon16/folder_green.png);
+    .icon16.base;
+    .icon16.icon16-folder_green;
+    //background-image: url(../img/icon16/folder_green.png);
   }
 }
 
 .user16{
   &,
   &-online{
-    background-image: url(../img/icon16/status_online.png);
+    .icon16.base;
+    .icon16.icon16-status_online;
+    //background-image: url(../img/icon16/status_online.png);
   }
   &-away{
-    background-image: url(../img/icon16/status_away3.png);
+    .icon16.base;
+    .icon16.icon16-status_away3;
+    //background-image: url(../img/icon16/status_away3.png);
   }
   &-busy{
-    background-image: url(../img/icon16/status_busy.png);
+    .icon16.base;
+    .icon16.icon16-status_busy;
+    //background-image: url(../img/icon16/status_busy.png);
   }
   &-speaker{
-    background-image: url(../img/icon16/sound.png);
+    .icon16.base;
+    .icon16.icon16-sound;
+    //background-image: url(../img/icon16/sound.png);
   }
   &-camera{
-    background-image: url(../img/icon16/webcam.png);
+    .icon16.base;
+    .icon16.icon16-webcam;
+    //background-image: url(../img/icon16/webcam.png);
   }
 }
 
@@ -209,15 +247,21 @@ ul.logs{
   //オンライン
   &,
   &[state="online"]{
-    background-image: url("../img/icon32/status_online.png");
+    .icon32.base;
+    .icon32.icon32-status_online;
+    //background-image: url("../img/icon32/status_online.png");
   }
   //ビジー
   &[state="busy"]{
-    background-image: url("../img/icon32/status_busy.png");
+    .icon32.base;
+    .icon32.icon32-status_busy;
+    //background-image: url("../img/icon32/status_busy.png");
   }
   //離席
   &[state="away"]{
-    background-image: url("../img/icon32/status_away3.png");
+    .icon32.base;
+    .icon32.icon32-status_away3;
+    //background-image: url("../img/icon32/status_away3.png");
   }
 }
 /* マイク状態 */
@@ -225,15 +269,21 @@ ul.logs{
   //有効
   &,
   &[state="enable"]{
-    background-image: url("../img/icon32/microphone.png");
+    .icon32.base;
+    .icon32.icon32-microphone;
+    //background-image: url("../img/icon32/microphone.png");
   }
   //無効(ミュート)
   &[state="disable"]{
-    background-image: url("../img/icon32/microphone_mute.png");
+    .icon32.base;
+    .icon32.icon32-microphone_mute;
+    //background-image: url("../img/icon32/microphone_mute.png");
   }
   //エラー
   &[state="error"]{
-    background-image: url("../img/icon32/microphone_err.png");
+    .icon32.base;
+    .icon32.icon32-microphone_err;
+    //background-image: url("../img/icon32/microphone_err.png");
   }
 }
 /* カメラ状態 */
@@ -241,53 +291,77 @@ ul.logs{
   // 有効
   &,
   &[state="enable"]{
-    background-image: url("../img/icon32/webcam.png");
+    .icon32.base;
+    .icon32.icon32-webcam;
+    //background-image: url("../img/icon32/webcam.png");
   }
   // 無効（ミュート）
   &[state="disable"]{
-    background-image: url("../img/icon32/webcam_mute.png");
+    .icon32.base;
+    .icon32.icon32-webcam_mute;
+    //background-image: url("../img/icon32/webcam_mute.png");
   }
   // エラー
   &[state="error"]{
-    background-image: url("../img/icon32/webcam_error.png");
+    .icon32.base;
+    .icon32.icon32-webcam_error;
+    //background-image: url("../img/icon32/webcam_error.png");
   }
 }
 /*ファイル転送*/
 .file32{
-  background-image: url("../img/icon32/folder_go.png")
+  .icon32.base;
+  .icon32.icon32-folder_go;
+  //background-image: url("../img/icon32/folder_go.png")
 }
 /*ルーム追加*/
 .addCh32{
-  background-image: url("../img/icon32/door_add.png");
+  .icon32.base;
+  .icon32.icon32-door_add;
+  //background-image: url("../img/icon32/door_add.png");
 }
 /*ルーム削除*/
 .removeCh32{
-  background-image: url("../img/icon32/door_remove.png");
+  .icon32.base;
+  .icon32.icon32-door_remove;
+  //background-image: url("../img/icon32/door_remove.png");
 }
 
 /* マスターボリューム */
 .sound32{
   &,
   &[state="enable"]{
-    background-image: url("../img/icon32/sound.png");
+    .icon32.base;
+    .icon32.icon32-sound;
+    //background-image: url("../img/icon32/sound.png");
   }
   &[state="disable"]{
-    background-image: url("../img/icon32/sound_mute.png");
+    .icon32.base;
+    .icon32.icon32-sound_mute;
+    //background-image: url("../img/icon32/sound_mute.png");
   }
 }
 /*スクリーンキャプチャ*/
 .screen32{
-  background-image: url("../img/icon32/widescreen.png");
+  .icon32.base;
+  .icon32.icon32-widescreen;
+  //background-image: url("../img/icon32/widescreen.png");
 }
 .screen16{
-  background-image: url("../img/icon16/widescreen.png");
+  .icon16.base;
+  .icon16.icon16-widescreen;
+  //background-image: url("../img/icon16/widescreen.png");
 }
 /*編集*/
 .edit16{
-  background-image: url("../img/icon16/page_white_edit.png");
+  .icon16.base;
+  .icon16.icon16-page_white_edit;
+  //background-image: url("../img/icon16/page_white_edit.png");
 }
 .accept16{
-  background-image: url("../img/icon16/accept_button.png");
+  .icon16.base;
+  .icon16.icon16-accept_button;
+  //background-image: url("../img/icon16/accept_button.png");
 }
 .inline-icon{
   display:inline-block;
@@ -401,6 +475,9 @@ ul#filetrans{
 div.tabs.infos .k-tabstrip-items,
 div.tabs.text-messages .k-tabstrip-items{
   font-size: 75% !important;
+  .k-link{
+    padding:0.5em;
+  }
 }
 div.tab-page.youtube.state-playing #youtube-player{
   display:inherit;
