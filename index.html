@@ -45,7 +45,7 @@
 	<header class="header-control">
 		<div class="splitter k-toolbar k-widget k-toolbar-resizable" data-bind="kendoTooltip: { filter: 'a.k-button[title]' , width: 150 }">
 			<!-- ko with:me -->
-			<a class="k-button k-button-icon" title="在席状態を変更" data-bind="click:function(s,e){ status=status=='away'?'online':'away'; if(e.shiftKey)Talk.prompt('メモ設定','',function(d){description=d})}">
+			<a class="k-button k-button-icon" title="在席状態を変更" data-bind="click:function(s,e){ status=status=='away'?'online':'away'; if(status=='online')description=''; if(e.shiftKey)Talk.prompt('メモ設定','',function(d){description=d})}">
 				<span class="online32" state="{{status}}"></span>
 			</a>
 			<a class="k-button k-button-icon" title="マイクの有効/無効を変更" data-bind="on.click: isMicMuted=!isMicMuted">
@@ -305,6 +305,14 @@
 												<dt>挙動設定</dt>
 												<dd>
 													<label><input type="checkbox" data-bind="checked:config.picturePopup" />画像リンクの自動ポップアップ</label>
+												</dd>
+												<dt>テキストチャット通知設定</dt>
+												<dd>
+													<div><label><input type="checkbox" name="chat-notify" data-bind="checked: config.chatNotifyTiming" value="all"/>　　すべてのチャット受信時に、通知音を鳴らす</label></div>
+													<div><label><input type="checkbox" name="chat-notify" data-bind="checked: config.chatNotifyTiming" value="whisper"/>プライベートチャット受信時に、通知音を鳴らす</label></div>
+													<div><label><input type="checkbox" name="chat-notify" data-bind="checked: config.chatNotifyTiming" value="keyword"/>　　　指定キーワード受信時に、通知音を鳴らす</label>
+														<input type="text" data-bind="value: config.chatNotifyKeywords" placeholder="キーワード1,キーワード2,キーワード3" style="display:block;margin-left:1.5em;min-width:calc(100% - 4em)"/>
+													</div>
 												</dd>
 												<dt>TTS設定 (テキスト読上げ）</dt>
 												<dd>
