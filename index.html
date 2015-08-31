@@ -544,7 +544,15 @@
 				</dd>
 				<dt>ユーザ名</dt>
 				<dd>
-					<input type="text" placeholder="任意のユーザ名" data-bind="value:config.user.name" style="width:calc(100% - 2em)"/>
+					<input type="text" placeholder="任意のユーザ名" data-bind="
+						value:config.user.name,
+						event:{
+							keypress:function(data,event){
+               				if(event.keyCode == 13)
+               					init();
+               				return true;
+               			}
+						}" style="width:calc(100% - 2em)"/>
 				</dd>
 				<dt></dt>
 				<dd>
