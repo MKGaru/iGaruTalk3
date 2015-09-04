@@ -1,5 +1,10 @@
 # www.robotstxt.org/
 # https://developers.google.com/webmasters/control-crawl-index/
 
+User-agent: Twitterbot
+Disallow:
+
 User-agent: *
 Disallow: /
+Allow:/about
+Allow:/about/*
