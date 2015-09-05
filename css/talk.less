@@ -538,7 +538,35 @@ div.tab-page.youtube.state-playing  #youtube-player+div{
   top: 6px;
   cursor: pointer;
 }
+
+body.custom-background{
+  background-size: cover;
+  &>header>.k-toolbar{
+    background-color: rgba(200,200,200,0.5) !important;
+  }
+
+  .k-splitter,
+  .k-widget.k-header{
+    background: rgba(0,0,0,0)!important;
+  }
+  .k-content,
+  .pane.k-pane.k-scrollable{
+    background:rgba(255,255,255,0.85) !important
+  }
+  ul.k-tabstrip-items.k-reset{
+    background-color: rgba(200,200,200,0.5) !important
+  }
+  .pane.k-pane.k-scrollable,
+  .k-content{
+    color: black !important;
+  }
+}
+
 .unsupported{
   display: none;
   user-select:inherit;
+}
+.filter.invert{
+  filter: invert();
+  -webkit-filter: invert();
 }
