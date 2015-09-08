@@ -24,6 +24,7 @@ CACHE:
 ./lib/knockout-kendo.js
 ./lib/eventemitter2.js
 ./js/peer.min.js
+./img/noimage.jpg
 ./audio/chatRCV_sound.mp3
 ./audio/chatRCV_sound.ogg
 ./audio/chatRCV_sound.wav
