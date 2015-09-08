@@ -1546,3 +1546,19 @@ body.custom-background .k-content {
   filter: invert();
   -webkit-filter: invert();
 }
+.ptt-config {
+  margin-left: 2em;
+}
+.ptt-config .devices {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ptt-config .devices .device {
+  width: 6em;
+  text-align: right;
+  display: inline-block;
+  cursor: default;
+}
+.ptt-config .devices .reset {
+  cursor: not-allowed;
+}
