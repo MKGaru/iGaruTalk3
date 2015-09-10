@@ -1133,6 +1133,15 @@ ul.logs .sender {
   width: 16px;
   height: 16px;
 }
+.user16-micmute {
+  background-image: url(spritesheet_16.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: text-top;
+  background-position: -83px -135px;
+  width: 16px;
+  height: 16px;
+}
 .user16-away {
   background-image: url(spritesheet_16.png);
   background-repeat: no-repeat;
