@@ -1,221 +1,180 @@
 .icon32 {
-    background-image: url(spritesheet_32.png);
-    background-repeat: no-repeat;
-    display: block;
+  background-image: url(spritesheet_32.png);
+  background-repeat: no-repeat;
+  display: block;
 }
-
-.icon32-clock_ {
-    width: 32px;
-    height: 32px;
-    background-position: -1px -1px;
+.icon32.icon32-clock_ {
+  background-position: -1px -1px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_pause {
-    width: 32px;
-    height: 32px;
-    background-position: -35px -1px;
+.icon32.icon32-control_pause {
+  background-position: -35px -1px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_pause_blue {
-    width: 32px;
-    height: 32px;
-    background-position: -69px -1px;
+.icon32.icon32-control_pause_blue {
+  background-position: -69px -1px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_play {
-    width: 32px;
-    height: 32px;
-    background-position: -103px -1px;
+.icon32.icon32-control_play {
+  background-position: -103px -1px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_play_blue {
-    width: 32px;
-    height: 32px;
-    background-position: -137px -1px;
+.icon32.icon32-control_play_blue {
+  background-position: -137px -1px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_repeat {
-    width: 32px;
-    height: 32px;
-    background-position: -171px -1px;
+.icon32.icon32-control_repeat {
+  background-position: -1px -35px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_repeat_blue {
-    width: 32px;
-    height: 32px;
-    background-position: -1px -35px;
+.icon32.icon32-control_repeat_blue {
+  background-position: -35px -35px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_start {
-    width: 32px;
-    height: 32px;
-    background-position: -35px -35px;
+.icon32.icon32-control_start {
+  background-position: -69px -35px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_start_blue {
-    width: 32px;
-    height: 32px;
-    background-position: -69px -35px;
+.icon32.icon32-control_start_blue {
+  background-position: -103px -35px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_stop {
-    width: 32px;
-    height: 32px;
-    background-position: -103px -35px;
+.icon32.icon32-control_stop {
+  background-position: -137px -35px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-control_stop_blue {
-    width: 32px;
-    height: 32px;
-    background-position: -137px -35px;
+.icon32.icon32-control_stop_blue {
+  background-position: -1px -69px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-creative_commons {
-    width: 32px;
-    height: 32px;
-    background-position: -171px -35px;
+.icon32.icon32-creative_commons {
+  background-position: -35px -69px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-door_add {
-    width: 32px;
-    height: 32px;
-    background-position: -1px -69px;
+.icon32.icon32-door_add {
+  background-position: -69px -69px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-door_m_in {
-    width: 32px;
-    height: 32px;
-    background-position: -35px -69px;
+.icon32.icon32-door_m_in {
+  background-position: -103px -69px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-door_open {
-    width: 32px;
-    height: 32px;
-    background-position: -69px -69px;
+.icon32.icon32-door_open {
+  background-position: -137px -69px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-door_remove {
-    width: 32px;
-    height: 32px;
-    background-position: -103px -69px;
+.icon32.icon32-door_remove {
+  background-position: -1px -103px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-fatcow {
-    width: 32px;
-    height: 32px;
-    background-position: -137px -69px;
+.icon32.icon32-fatcow {
+  background-position: -35px -103px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-folder_go {
-    width: 32px;
-    height: 32px;
-    background-position: -171px -69px;
+.icon32.icon32-folder_go {
+  background-position: -69px -103px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-inbox_download {
-    width: 32px;
-    height: 32px;
-    background-position: -1px -103px;
+.icon32.icon32-inbox_download {
+  background-position: -103px -103px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-magnifier {
-    width: 32px;
-    height: 32px;
-    background-position: -35px -103px;
+.icon32.icon32-magnifier {
+  background-position: -137px -103px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-microphone {
-    width: 32px;
-    height: 32px;
-    background-position: -69px -103px;
+.icon32.icon32-microphone {
+  background-position: -1px -137px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-microphone_err {
-    width: 32px;
-    height: 32px;
-    background-position: -103px -103px;
+.icon32.icon32-microphone_err {
+  background-position: -35px -137px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-microphone_mute {
-    width: 32px;
-    height: 32px;
-    background-position: -137px -103px;
+.icon32.icon32-microphone_mute {
+  background-position: -69px -137px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-picture {
-    width: 32px;
-    height: 32px;
-    background-position: -171px -103px;
+.icon32.icon32-picture {
+  background-position: -103px -137px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-sound {
-    width: 32px;
-    height: 32px;
-    background-position: -1px -137px;
+.icon32.icon32-sound {
+  background-position: -137px -137px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-sound_mute {
-    width: 32px;
-    height: 32px;
-    background-position: -35px -137px;
+.icon32.icon32-sound_mute {
+  background-position: -171px -1px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-status_away {
-    width: 32px;
-    height: 32px;
-    background-position: -69px -137px;
+.icon32.icon32-status_away {
+  background-position: -171px -35px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-status_away3 {
-    width: 32px;
-    height: 32px;
-    background-position: -103px -137px;
+.icon32.icon32-status_away3 {
+  background-position: -171px -69px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-status_busy {
-    width: 32px;
-    height: 32px;
-    background-position: -137px -137px;
+.icon32.icon32-status_busy {
+  background-position: -171px -103px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-status_online {
-    width: 32px;
-    height: 32px;
-    background-position: -171px -137px;
+.icon32.icon32-status_online {
+  background-position: -171px -137px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-webcam {
-    width: 32px;
-    height: 32px;
-    background-position: -1px -171px;
+.icon32.icon32-webcam {
+  background-position: -1px -171px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-webcam_delete {
-    width: 32px;
-    height: 32px;
-    background-position: -35px -171px;
+.icon32.icon32-webcam_delete {
+  background-position: -35px -171px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-webcam_error {
-    width: 32px;
-    height: 32px;
-    background-position: -69px -171px;
+.icon32.icon32-webcam_error {
+  background-position: -69px -171px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-webcam_mute {
-    width: 32px;
-    height: 32px;
-    background-position: -103px -171px;
+.icon32.icon32-webcam_mute {
+  background-position: -103px -171px;
+  width: 32px;
+  height: 32px;
 }
-
-.icon32-widescreen {
-    width: 32px;
-    height: 32px;
-    background-position: -137px -171px;
-}
-
-.icon32-widescreen_mute {
-    width: 32px;
-    height: 32px;
-    background-position: -171px -171px;
+.icon32.icon32-widescreen {
+  background-position: -137px -171px;
+  width: 32px;
+  height: 32px;
 }
