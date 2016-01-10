@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iGaruDesktopCapture</title>
+  <script src="https://skyway.io/dist/0.3/peer.js"></script>
+</head>
+<body>
+<script>
+var peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+peer.on('open', function(id) {
+  var url = 'http://talk.igaru.com/share/#!/'+ id;
+  var target = parent.postMessage ? parent : (parent.document.postMessage ? parent.document : undefined);
+  if (typeof target != "undefined") {
+    target.postMessage(url, "null");
+  }
+  window.addEventListener('message', function(event) {
+    var stream = event.data;
+    peer.on('connection', function(connection) {
+      peer.call(connection.peer,stream);
+    });
+  },false);
+});
+</script>
+</body>
+</html>
