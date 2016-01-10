@@ -11,7 +11,7 @@ peer.on('open', function(id) {
   var url = 'http://talk.igaru.com/share/#!/'+ id;
   var target = parent.postMessage ? parent : (parent.document.postMessage ? parent.document : undefined);
   if (typeof target != "undefined") {
-    target.postMessage(url, "null");
+    target.postMessage(url, "*");
   }
   window.addEventListener('message', function(event) {
     var stream = event.data;
