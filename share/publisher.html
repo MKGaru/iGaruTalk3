@@ -14,10 +14,34 @@ peer.on('open', function(id) {
     target.postMessage(url, "*");
   }
   window.addEventListener('message', function(event) {
-    var stream = event.data;
-    peer.on('connection', function(connection) {
-      peer.call(connection.peer,stream);
-    });
+    var streamId = event.data;
+    navigator.webkitGetUserMedia(
+      {
+        audio: { //Note: Audio desktop capture only supported in Chromium in WindowsOS 
+          mandatory: {
+             chromeMediaSource: "system",
+             chromeMediaSourceId: streamId
+          }
+        },
+        video: {
+          mandatory: {
+            chromeMediaSource: 'desktop', 
+            chromeMediaSourceId: streamId, 
+            maxWidth: 1920, 
+            maxHeight: 1080
+          }, 
+          optional: []
+        }
+      },
+      function(stream){        
+        peer.on('connection', function(connection) {
+          peer.call(connection.peer,stream);
+        });
+      },
+      function(err){
+        console.error(err);
+      }
+    );
   },false);
 });
 </script>

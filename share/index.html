@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iGaruDesktopCapture</title>
+  <script src="https://skyway.io/dist/0.3/peer.js"></script>
+  <style>
+html{
+  background: black;
+}
+video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  margin: 0 auto;
+}
+  </style>
+</head>
+<body>
+<video id="video" autoplay muted></video>
+<script>
+var remote = "";
+if(location.hash.startsWith("#!/")) remote = location.hash.slice(3);
+var peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+peer.on('open', function(id) {
+  peer.connect(remote);
+  peer.on('call',function(call){
+    call.answer();
+    call.on('stream', function(stream) {
+      var video = document.getElementById('video');
+      video.src = URL.createObjectURL(stream);
+    });
+  });
+});
+</script>
+</body>
+</html>
