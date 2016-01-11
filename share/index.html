@@ -31,7 +31,12 @@ if(util.browser=='Unsupported'){
 var peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
 peer.on('open', function(id) {
   function connect(remote){
-    peer.connect(remote);
+    var connection = peer.connect(remote);
+    setInterval(function(){
+      if(!connection.open){
+        connection = peer.connect(remote);
+      }
+    },5000);
     peer.on('call',function(call){
       call.answer();
       call.on('stream', function(stream) {
