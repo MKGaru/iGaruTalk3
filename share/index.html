@@ -29,14 +29,15 @@ if(util.browser=='Unsupported'){
   document.getElementById('unsupported').style.display='block';
 }
 var peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+var remote = "";
+var connection;
 peer.on('open', function(id) {
   function connect(remote){
-    var connection = peer.connect(remote);
-    setInterval(function(){
-      if(!connection.open){
-        connection = peer.connect(remote);
-      }
-    },5000);
+    connection = peer.connect(remote);
+    connection.on('data',function(data){
+      if(data)
+        document.title = data + ' | iGaru Desktop Capture';
+    });
     peer.on('call',function(call){
       call.answer();
       call.on('stream', function(stream) {
@@ -62,11 +63,15 @@ peer.on('open', function(id) {
     });
   }
   window.onhashchange = function(){
-    var remote = "";
     if(location.hash.startsWith("#!/")) remote = location.hash.slice(3);
     connect(remote);
   };
   window.onhashchange();
+  setInterval(function(){
+    if(!connection.open){
+      connect(remote);
+    }
+  },10000);
 });
 window.onbeforeunload = function(e) {
   peer.destroy();

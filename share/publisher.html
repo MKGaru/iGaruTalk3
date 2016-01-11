@@ -62,8 +62,10 @@ peer.on('open', function(id) {
       function(stream){        
         streams.push(stream);
         for( var id in peer.connections ){
-          if(peer.connections[id][0] && peer.connections[id][0].open )
+          if(peer.connections[id][0] && peer.connections[id][0].open ){
             call(id,stream);
+            peer.connections[id][0].send(options.title)
+          }
         }
       },
       function(err){
