@@ -81,6 +81,8 @@ peer.on('open', function(id) {
           if(peer.connections[id][0] && peer.connections[id][0].open )
             call(id,stream);
         }
+      },function(err){
+        console.error(err);
       }
     );
   },false);
