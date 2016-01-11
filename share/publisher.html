@@ -71,9 +71,9 @@ peer.on('open', function(id) {
     );
   },false);
   
-  function call(peer,stream){
+  function call(id,stream){
     mediaConnections.push(
-      peer.call(peer,stream) 
+      peer.call(id,stream) 
     );
   }
   
