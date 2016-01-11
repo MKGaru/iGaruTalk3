@@ -9,7 +9,7 @@
 var id = localStorage.getItem('id');
 if(id == 'undefined' || id == 'null') id = null;
 var peer = id
-  ? new Peer(id , {key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'}),
+  ? new Peer(id , {key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'})
   : new Peer(     {key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
 peer.on('error',function(err){
   if(err=='unavailable-id' || err=='invalid-id'){
