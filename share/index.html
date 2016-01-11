@@ -27,7 +27,6 @@ video{
 <script>
 if(util.browser=='Unsupported'){
   document.getElementById('unsupported').style.display='block';
-  return;
 }
 var peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
 peer.on('open', function(id) {
