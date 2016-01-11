@@ -1,38 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>iGaruDesktopCapture</title>
+  <title>iGaru Desktop Capture</title>
   <script src="https://skyway.io/dist/0.3/peer.js"></script>
 </head>
 <body>
 <script>
-var peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+var id = localStorage.getItem('id');
+if(id == 'undefined' || id == 'null') id = null;
+var peer = id
+  ? new Peer(id , {key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'}),
+  : new Peer(     {key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+peer.on('error',function(err){
+  if(err=='unavailable-id' || err=='invalid-id'){
+    localStorage.removeItem('id');
+    peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+  }
+});
 peer.on('open', function(id) {
+  localStorage.setItem('id',id);
   var url = 'http://talk.igaru.com/share/#!/'+ id;
   var target = parent.postMessage ? parent : (parent.document.postMessage ? parent.document : undefined);
   if (typeof target != "undefined") {
-    target.postMessage(url, "*");
+    target.postMessage({ type:'url',value:url}, "*");
   }
   window.addEventListener('message', function(event) {
-    var streamId = event.data;
-    navigator.webkitGetUserMedia(
-      {
+    var options = event.data;
+    if(typeof options='string'){
+      options = {
         audio: { //Note: Audio desktop capture only supported in Chromium in WindowsOS 
           mandatory: {
-             chromeMediaSource: "system",
-             chromeMediaSourceId: streamId
-          }
+              chromeMediaSource: "system",
+              chromeMediaSourceId: options
+           }
         },
         video: {
           mandatory: {
             chromeMediaSource: 'desktop', 
-            chromeMediaSourceId: streamId, 
-            maxWidth: 1920, 
-            maxHeight: 1080
+            chromeMediaSourceId: sourceId, 
+            maxWidth: config.width, 
+            maxHeight: config.height,
+            minFrameRate: 30
           }, 
-          optional: []
+          optional: [
+            { minFrameRate: 60 }
+          ]
         }
-      },
+      };
+    }
+    navigator.webkitGetUserMedia(
+      options,
       function(stream){        
         peer.on('connection', function(connection) {
           peer.call(connection.peer,stream);
@@ -43,6 +60,16 @@ peer.on('open', function(id) {
       }
     );
   },false);
+  
+  setInterval(function(){
+    var viewers = 0;
+    for( var id in peer.connections ){
+      if(peer.connections[id][0] && peer.connections[id][0].open ) viewers++;
+    }
+    if(target){
+      target.postMessage({ type:'views',value:views }, "*");
+    }
+  },5000);
 });
 </script>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>iGaruDesktopCapture</title>
+  <title>iGaru Desktop Capture</title>
   <script src="https://skyway.io/dist/0.3/peer.js"></script>
   <style>
 html{
@@ -20,20 +20,37 @@ video{
 </head>
 <body>
 <video id="video" autoplay controls></video>
+<h1 style="text-align: center; color: white; position: relative; z-index: 1;display:none" id="unsupported">
+  お使いのブラウザは、WebRTCによる映像再生に対応していません。<br>
+  <a href="https://www.google.com/chrome/" target="_blank">Google Chrome</a>等でご利用ください。
+</h1>
 <script>
-var remote = "";
-if(location.hash.startsWith("#!/")) remote = location.hash.slice(3);
+if(util.browser=='Unsupported'){
+  document.getElementById('unsupported').style.display='block';
+  return;
+}
 var peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
 peer.on('open', function(id) {
-  peer.connect(remote);
-  peer.on('call',function(call){
-    call.answer();
-    call.on('stream', function(stream) {
-      var video = document.getElementById('video');
-      video.src = URL.createObjectURL(stream);
+  function connect(remote){
+    peer.connect(remote);
+    peer.on('call',function(call){
+      call.answer();
+      call.on('stream', function(stream) {
+        var video = document.getElementById('video');
+        video.src = URL.createObjectURL(stream);
+      });
     });
-  });
+  }
+  window.onhashchange = function(){
+    var remote = "";
+    if(location.hash.startsWith("#!/")) remote = location.hash.slice(3);
+    connect(remote);
+  };
+  window.onhashchange();
 });
+window.onbeforeunload = function(e) {
+  peer.destroy();
+}
 </script>
 </body>
 </html>
