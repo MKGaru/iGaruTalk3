@@ -19,7 +19,7 @@ peer.on('error',function(err){
 });
 peer.on('open', function(id) {
   localStorage.setItem('id',id);
-  var url = 'http://talk.igaru.com/share/#!/'+ id;
+  var url = 'https://talk.igaru.com/share/#!/'+ id;
   var mediaConnections = [];
   var streams = [];
   var target = parent.postMessage ? parent : (parent.document.postMessage ? parent.document : undefined);
@@ -56,6 +56,7 @@ peer.on('open', function(id) {
     mediaConnections.splice(0,mediaConnections.length);
     streams.splice(0,streams.length);
     
+    // Application Capture Video/Sound
     navigator.webkitGetUserMedia(
       options,
       function(stream){        
@@ -68,6 +69,19 @@ peer.on('open', function(id) {
       function(err){
         console.error(err);
       }
+    );
+    // User Camera/Mic
+    navigator.webkitGetUserMedia(
+      {
+        video: options.captureCamera,
+        audio: options.captureMic
+      },function(stream){
+        streams.push(stream);
+        for( var id in peer.connections ){
+          if(peer.connections[id][0] && peer.connections[id][0].open )
+            call(id,stream);
+        }
+      });
     );
   },false);
   

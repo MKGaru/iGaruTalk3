@@ -35,8 +35,24 @@ peer.on('open', function(id) {
     peer.on('call',function(call){
       call.answer();
       call.on('stream', function(stream) {
-        var video = document.getElementById('video');
-        video.src = URL.createObjectURL(stream);
+        if(stream.getVideoTracks().length){
+          var video = document.getElementById('video');
+          video.src = URL.createObjectURL(stream);
+        }else{
+           var video = document.getElementById('video');
+          var audio = new Audio();
+          audio.src = URL.createObjectURL(stream);
+          audio.play();
+          video.addEventListener('volumechange',function(){
+            audio.volume = video.volume;
+          },false);
+          video.addEventListener('pause',function(){
+            audio.pause();
+          },false);
+          video.addEventListener('play',function(){
+            audio.play();
+          },false);
+        }
       });
     });
   }
