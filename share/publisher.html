@@ -71,20 +71,22 @@ peer.on('open', function(id) {
       }
     );
     // User Camera/Mic
-    navigator.webkitGetUserMedia(
-      {
-        video: options.captureCamera,
-        audio: options.captureMic
-      },function(stream){
-        streams.push(stream);
-        for( var id in peer.connections ){
-          if(peer.connections[id][0] && peer.connections[id][0].open )
-            call(id,stream);
+    if( options.captureCamera || options.captureMic){
+      navigator.webkitGetUserMedia(
+        {
+          video: options.captureCamera,
+          audio: options.captureMic
+        },function(stream){
+          streams.push(stream);
+          for( var id in peer.connections ){
+            if(peer.connections[id][0] && peer.connections[id][0].open )
+              call(id,stream);
+          }
+        },function(err){
+          console.error(err);
         }
-      },function(err){
-        console.error(err);
-      }
-    );
+      );
+    }
   },false);
   
   function call(id,stream){
