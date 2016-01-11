@@ -26,7 +26,7 @@ peer.on('open', function(id) {
   }
   window.addEventListener('message', function(event) {
     var options = event.data;
-    if(typeof options='string'){
+    if(typeof options=='string'){
       options = {
         audio: { //Note: Audio desktop capture only supported in Chromium in WindowsOS 
           mandatory: {
