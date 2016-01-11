@@ -20,6 +20,8 @@ peer.on('error',function(err){
 peer.on('open', function(id) {
   localStorage.setItem('id',id);
   var url = 'http://talk.igaru.com/share/#!/'+ id;
+  var mediaConnections = [];
+  var streams = [];
   var target = parent.postMessage ? parent : (parent.document.postMessage ? parent.document : undefined);
   if (typeof target != "undefined") {
     target.postMessage({ type:'url',value:url}, "*");
@@ -48,12 +50,20 @@ peer.on('open', function(id) {
         }
       };
     }
+    mediaConnections.forEach(function(mediaConnection){
+      mediaConnection.close();
+    });
+    mediaConnections.splice(0,mediaConnections.length);
+    streams.splice(0,streams.length);
+    
     navigator.webkitGetUserMedia(
       options,
       function(stream){        
-        peer.on('connection', function(connection) {
-          peer.call(connection.peer,stream);
-        });
+        streams.push(stream);
+        for( var id in peer.connections ){
+          if(peer.connections[id][0] && peer.connections[id][0].open )
+            call(id,stream);
+        }
       },
       function(err){
         console.error(err);
@@ -61,10 +71,22 @@ peer.on('open', function(id) {
     );
   },false);
   
+  function call(peer,stream){
+    mediaConnections.push(
+      peer.call(peer,stream) 
+    );
+  }
+  
+  peer.on('connection', function(connection) {
+    streams.forEach(function(stream){
+      call(connection.peer,stream);
+    });
+  });
+  
   setInterval(function(){
-    var viewers = 0;
+    var views = 0;
     for( var id in peer.connections ){
-      if(peer.connections[id][0] && peer.connections[id][0].open ) viewers++;
+      if(peer.connections[id][0] && peer.connections[id][0].open ) views++;
     }
     if(target){
       target.postMessage({ type:'views',value:views }, "*");
