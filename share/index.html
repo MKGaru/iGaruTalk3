@@ -48,9 +48,11 @@ peer.on('open', function(id) {
            var video = document.getElementById('video');
           var audio = new Audio();
           audio.src = URL.createObjectURL(stream);
+          audio.volume = video.volume;
           audio.play();
           video.addEventListener('volumechange',function(){
             audio.volume = video.volume;
+            audio.muted = video.muted;
           },false);
           video.addEventListener('pause',function(){
             audio.pause();

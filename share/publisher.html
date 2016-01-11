@@ -28,28 +28,7 @@ peer.on('open', function(id) {
   }
   window.addEventListener('message', function(event) {
     var options = event.data;
-    if(typeof options=='string'){
-      options = {
-        audio: { //Note: Audio desktop capture only supported in Chromium in WindowsOS 
-          mandatory: {
-              chromeMediaSource: "system",
-              chromeMediaSourceId: options
-           }
-        },
-        video: {
-          mandatory: {
-            chromeMediaSource: 'desktop', 
-            chromeMediaSourceId: sourceId, 
-            maxWidth: config.width, 
-            maxHeight: config.height,
-            minFrameRate: 30
-          }, 
-          optional: [
-            { minFrameRate: 60 }
-          ]
-        }
-      };
-    }
+
     mediaConnections.forEach(function(mediaConnection){
       mediaConnection.close();
     });
