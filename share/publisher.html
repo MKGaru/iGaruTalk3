@@ -38,13 +38,30 @@ peer.on('open', function(id) {
     // Application Capture Video/Sound
     navigator.webkitGetUserMedia(
       options,
-      function(stream){        
-        streams.push(stream);
-        for( var id in peer.connections ){
-          if(peer.connections[id][0] && peer.connections[id][0].open ){
-            call(id,stream);
-            peer.connections[id][0].send(options.title)
+      function(stream){
+        function publish(){
+          streams.push(stream);
+          for( var id in peer.connections ){
+            if(peer.connections[id][0] && peer.connections[id][0].open ){
+              call(id,stream);
+              peer.connections[id][0].send(options.title)
+            }
           }
+        }
+        if(options.soundDevice && options.soundDevice!='application'){
+          navigator.webkitGetUserMedia(
+            {
+              audio:{optional: [{sourceId: options.soundDevice}] }
+            },function(stream2){
+              stream.addTrack(stream2.getAudioTracks()[0]);
+              publish();
+            },function(err){
+              console.error(err);
+            }
+          );
+        }
+        else{
+          publish();
         }
       },
       function(err){
