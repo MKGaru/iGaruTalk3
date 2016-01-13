@@ -16,9 +16,35 @@ video{
   height: 100%;
   margin: 0 auto;
 }
+body:hover .notice {
+  top: -1px;
+}
+.notice{
+  position: absolute;
+  top: -2em;
+  left:0;
+  right:0;
+  z-index: 1;
+  color: white;
+  width: 100%;
+  text-align: center;
+  transition: all ease 500ms;
+  transition-delay: 1s;
+}
+.notice .message{
+  display: inline-block;
+  background: rgba(200,200,200,0.6);
+  padding: 0.2em 2em;
+  border: solid 1px;
+  border-radius: 0 0 10px 10px;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
+<div class="notice">
+  <a href="https://github.com/MKGaru/iGaruCapture/releases/latest" class="message" target="_blank">遅延の少ない配信なら、iGaruCapture</a>
+</div>
 <video id="video" autoplay controls></video>
 <h1 style="text-align: center; color: white; position: relative; z-index: 1;display:none" id="unsupported">
   お使いのブラウザは、WebRTCによる映像再生に対応していません。<br>
@@ -28,7 +54,16 @@ video{
 if(util.browser=='Unsupported'){
   document.getElementById('unsupported').style.display='block';
 }
-var peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+function genID(){
+  var c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  var cl = c.length;
+  var r = "VW";
+  for(var i=0; i<14; i++){ //>
+    r += c[Math.floor(Math.random()*cl)];
+  }
+  return r;
+}
+var peer = new Peer(genID(),{key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
 var remote = "";
 var connection;
 peer.on('open', function(id) {
@@ -78,6 +113,10 @@ peer.on('open', function(id) {
 window.onbeforeunload = function(e) {
   peer.destroy();
 }
+setTimeout(function(){
+  var abs = document.getElementById('abs-top-frame');
+  if(abs) abs.remove();
+},1000);
 </script>
 </body>
 </html>
