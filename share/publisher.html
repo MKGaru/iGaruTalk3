@@ -2,19 +2,19 @@
 <html>
 <head>
   <title>iGaru Desktop Capture</title>
-  <script src="https://skyway.io/dist/0.3/peer.js"></script>
+  <script src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
 </head>
 <body>
 <script>
 var id = localStorage.getItem('id');
 if(id == 'undefined' || id == 'null') id = null;
 var peer = id
-  ? new Peer(id , {key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'})
-  : new Peer(     {key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+  ? new Peer(id , {key: 'ac6c0451-3f51-4e3d-b868-a2dfb409a6b1'})
+  : new Peer(     {key: 'ac6c0451-3f51-4e3d-b868-a2dfb409a6b1'});
 peer.on('error',function(err){
   if(err=='unavailable-id' || err=='invalid-id'){
     localStorage.removeItem('id');
-    peer = new Peer({key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+    peer = new Peer({key: 'ac6c0451-3f51-4e3d-b868-a2dfb409a6b1'});
   }
 });
 peer.on('open', function(id) {
