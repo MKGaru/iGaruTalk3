@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>iGaru Desktop Capture</title>
-  <script src="https://skyway.io/dist/0.3/peer.js"></script>
+  <script src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
   <style>
 html{
   background: black;
@@ -15,6 +15,7 @@ video{
   right: 0;
   height: 100%;
   margin: 0 auto;
+  max-width: 100%;
 }
 body:hover .notice {
   top: -1px;
@@ -53,7 +54,7 @@ body:hover .notice {
   <a href="https://www.google.com/chrome/" target="_blank">Google Chrome</a>等でご利用ください。
 </h1>
 <script>
-if(util.browser=='Unsupported'){
+if(typeof RTCPeerConnection ==='undefined'){
   document.getElementById('unsupported').style.display='block';
 }
 function genID(){
@@ -65,9 +66,15 @@ function genID(){
   }
   return r;
 }
-var peer = new Peer(genID(),{key: 'c08e7ef5-80a6-40b7-9671-5156cbf83598'});
+var peer = new Peer({key: 'ac6c0451-3f51-4e3d-b868-a2dfb409a6b1'});
 var remote = "";
 var connection;
+var video = document.getElementById('video');
+video.addEventListener('volumechange',function(){
+  localStorage.setItem('volume',video.volume)
+  localStorage.setItem('muted',video.muted)
+},false);
+
 peer.on('open', function(id) {
   function connect(remote){
     connection = peer.connect(remote);
@@ -79,17 +86,17 @@ peer.on('open', function(id) {
       call.answer();
       call.on('stream', function(stream) {
         if(stream.getVideoTracks().length){
-          var video = document.getElementById('video');
-          video.src = URL.createObjectURL(stream);
+          if(typeof video.srcObject == 'object')  video.srcObject = stream;
+          else video.src = URL.createObjectURL(stream);
+          if(localStorage.getItem('volume')) video.volume = +localStorage.getItem('volume')
+          if(localStorage.getItem('muted')) video.volume = localStorage.getItem('muted') == 'true'
         }else{
-           var video = document.getElementById('video');
           var audio = new Audio();
-          audio.src = URL.createObjectURL(stream);
-          audio.volume = video.volume;
+          if(typeof audio.srcObject == 'object') audio.srcObject = stream;
+          else audio.src = URL.createObjectURL(stream);
           audio.play();
           video.addEventListener('volumechange',function(){
             audio.volume = video.volume;
-            audio.muted = video.muted;
           },false);
           video.addEventListener('pause',function(){
             audio.pause();
@@ -108,7 +115,7 @@ peer.on('open', function(id) {
   window.onhashchange();
   setInterval(function(){
     if(!connection.open){
-      connect(remote);
+      location.reload()
     }
   },10000);
 });
